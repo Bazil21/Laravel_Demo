@@ -23,11 +23,18 @@ class Customers extends Controller
         $customer->country = $request['country'];
         $customer->state = $request['state'];
         $customer->save();
-        return redirect("/customer/view");
+        return redirect("/customer");
     }
     public Function view(){
         $customers = Customer::all();
         $data = compact("customers");
         return view("customer-view")->with($data);
+    }
+    public function delete($id){
+        $customer = Customer::find($id);
+     if(!is_null($customer)){
+        $customer->delete();
+     }
+     return redirect('/customer');
     }
 }
