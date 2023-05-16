@@ -14,7 +14,32 @@
 </head>
 
 <body>
+    <header>
+        <nav class="navbar container p-3 navbar-expand-sm navbar-dark bg-primary">
 
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation"></button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url('/') }}" aria-current="page">Home <span
+                                class="visually-hidden">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/customer') }}">View Customers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('customer.create') }}">Create Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/about') }}">About Page</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </header>
     <div class="mt-5 container">
         <div class="table-responsive">
             <h4 class="text-center ">Customers Data</h4>
@@ -28,7 +53,7 @@
                         <th>State</th>
                         <th>Country</th>
                         <th>Status</th>
-
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,10 +75,22 @@
                             <td>{{ $value->country }}</td>
                             <td>
                                 @if ($value->status == 1)
-                                    Active
+                                    <a href="#">
+                                        <span class="badge bg-success">
+                                            Active 
+                                        </span>
+                                    </a>
                                 @else
-                                    Inactive
+                                    <a href="#">
+                                        <span class="badge bg-danger">
+                                            Inactive
+                                        </span>
+                                    </a>
                                 @endif
+                            </td>
+                            <td>
+                                <a  class="btn btn-danger" href="{{route('customer.delete',['id' => $value->customer_id])}}"
+                                    role="button">Delete</a>
                             </td>
                         </tr>
                     @endforeach
