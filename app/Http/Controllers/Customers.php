@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
+
 class Customers extends Controller
 {
     //
-    public function index(){
-        return view("customer");
+    public function index()
+    {
+        $url = url("/customer");
+        $title = "Create Customer";
+        $data = compact("url", "title");
+        return view("customer")->with($data);
     }
-    public Function store(Request $request){
+    public function store(Request $request)
+    {
         // echo "<pre>";
         // print_r($request->all());
         $customer = new Customer();
@@ -25,16 +31,43 @@ class Customers extends Controller
         $customer->save();
         return redirect("/customer");
     }
-    public Function view(){
+    public function view()
+    {
         $customers = Customer::all();
         $data = compact("customers");
         return view("customer-view")->with($data);
     }
-    public function delete($id){
+    public function delete($id)
+    {
         $customer = Customer::find($id);
-     if(!is_null($customer)){
-        $customer->delete();
-     }
-     return redirect('/customer');
+        if (!is_null($customer)) {
+            $customer->delete();
+        }
+        return redirect('/customer');
+    }
+    public function edit($id)
+    {
+        $customer = Customer::find($id);
+        if (is_null($customer)) {
+            return redirect("/customer");
+        } else {
+            $url = url("/customer/update") . "/" . $id;
+            $title = "Update Customer";
+            $data = compact("customer", "url", "title");
+            return view("customer")->with($data);
+        }
+    }
+    public function update($id, Request $request){
+        $customer = Customer::find($id);
+        $customer->name = $request['name'];
+        $customer->email = $request['email'];
+        $customer->password = md5($request['password']);
+        $customer->dob = $request['dob'];
+        $customer->gender = $request['gender'];
+        $customer->address = $request['address'];
+        $customer->country = $request['country'];
+        $customer->state = $request['state'];
+        $customer->save();
+        return redirect("customer");
     }
 }

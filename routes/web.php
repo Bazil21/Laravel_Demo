@@ -22,10 +22,14 @@ Route::post('/register', [Registration::class,'register']);
 Route::get('/',function(){
     return view("welcome");
 });
-Route::get('/',function(){
-    return view("welcome");
+Route::get('/about',function(){
+    return view("about");
 });
-Route::get('/customer', [Customers::class,'index']);
+Route::get('/customer/create', [Customers::class,'index'])->name('customer.create');
 Route::post('/customer', [Customers::class,'store']);
-Route::get('/customer/view', [Customers::class,'view']);
+Route::get('/customer', [Customers::class,'view']);
+Route::get('/customer/delete/{id}', [Customers::class,'delete'])->name('customer.delete');
+Route::get('/customer/edit/{id}', [Customers::class,'edit'])->name('customer.edit');
+Route::post('/customer/update/{id}', [Customers::class,'update'])->name('customer.update');
+
 
