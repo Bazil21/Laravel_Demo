@@ -13,7 +13,7 @@
     <style>
         .gradient-custom {
             /* fallback for old browsers */
-            background: #f093fb;
+            background: #fff;
 
             /* Chrome 10-25, Safari 5.1-6 */
             background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
@@ -35,7 +35,7 @@
     </style>
 </head>
 
-<body>
+<body class="gradient-custom">
     <header>
         <nav class="navbar container p-3 navbar-expand-sm navbar-dark bg-primary">
 
@@ -62,21 +62,21 @@
             </div>
         </nav>
     </header>
-    <section class="gradient-custom">
+    <section class="">
         <div class="container py-5 h-100">
             <div class="row justify-content-center align-items-center h-100">
                 <div class="col-12 col-lg-10 col-xl-10">
                     <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                         <div class="card-body p-2 p-md-5">
-                            <h3 class="mb-2 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-                            <form action="{{ url('/') }}/customer" method="POST">
+                            <h3 class="mb-2 pb-2 pb-md-0 mb-md-5">{{$title}}</h3>
+                            <form action="{{$url}}" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6 mb-2 ">
 
                                         <div class="form-outline">
                                             <input type="text" id="firstName" name="name"
-                                                class="form-control  form-control-lg" />
+                                                class="form-control  form-control-lg" value="{{$customer->name}}" />
                                             <label class="form-label " for="firstName">Name</label>
                                         </div>
                                         <span class="text-danger">
@@ -89,7 +89,7 @@
 
                                         <div class="form-outline">
                                             <input type="email" id="lastName" name="email"
-                                                class="form-control form-control-lg" />
+                                                class="form-control form-control-lg" value="{{$customer->email}}" />
                                             <label class="form-label" for="lastName">Email</label>
                                         </div>
                                         <span class="text-danger">
@@ -105,7 +105,7 @@
 
                                         <div class="form-outline">
                                             <input type="password" id="Password" name="password"
-                                                class="form-control form-control-lg" />
+                                                class="form-control form-control-lg" value="{{$customer->password}}"  />
                                             <label class="form-label" for="Password">Password</label>
                                         </div>
                                         <span class="text-danger">
@@ -118,7 +118,7 @@
 
                                         <div class="form-outline">
                                             <input type="password" id="Cpassword" name="confirm_password"
-                                                class="form-control form-control-lg" />
+                                                class="form-control form-control-lg" value="{{$customer->password}}"  />
                                             <label class="form-label" for="Cpassword">Confirm Password</label>
                                         </div>
                                         <span class="text-danger">
@@ -133,7 +133,7 @@
 
                                         <div class="form-outline datepicker w-100">
                                             <input type="date" name="dob" class="form-control form-control-lg"
-                                                id="birthdayDate" />
+                                                id="birthdayDate" value="{{$customer->dob}}" />
                                             <label for="birthdayDate" class="form-label">Birthday</label>
                                         </div>
                                         <span class="text-danger">
@@ -148,19 +148,19 @@
 
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="gender"
-                                                id="femaleGender" value="F" checked />
+                                                id="femaleGender" value="F"  {{$customer->gender == "F" ? "checked" : "" }} />
                                             <label class="form-check-label" for="femaleGender">Female</label>
                                         </div>
 
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="gender"
-                                                id="maleGender" value="M" />
+                                                id="maleGender" value="M" {{$customer->gender == "M" ? "checked" : "" }} />
                                             <label class="form-check-label" for="maleGender">Male</label>
                                         </div>
 
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="gender"
-                                                id="otherGender" value="O" />
+                                                id="otherGender" value="O"  {{$customer->gender == "O" ? "checked" : "" }}  />
                                             <label class="form-check-label" for="otherGender">Other</label>
                                         </div>
                                         <span class="text-danger">
@@ -176,7 +176,7 @@
 
                                         <div class="form-outline">
                                             <input type="text" id="Country" name="country"
-                                                class="form-control form-control-lg" />
+                                                class="form-control form-control-lg" value="{{$customer->country}}"/>
                                             <label class="form-label" for="Country">Country</label>
                                         </div>
                                         <span class="text-danger">
@@ -189,7 +189,7 @@
 
                                         <div class="form-outline">
                                             <input type="text" id="State" name="state"
-                                                class="form-control form-control-lg" />
+                                                class="form-control form-control-lg" value="{{$customer->state}}" />
                                             <label class="form-label" for="State">State</label>
                                         </div>
                                         <span class="text-danger">
@@ -205,7 +205,7 @@
 
                                         <div class="form-outline">
                                             <input type="text" id="Address" name="address"
-                                                class="form-control form-control-lg" />
+                                                class="form-control form-control-lg" value="{{$customer->address}}" />
                                             <label class="form-label" for="Address">Address</label>
                                         </div>
                                         <span class="text-danger">
