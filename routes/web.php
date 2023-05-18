@@ -32,4 +32,7 @@ Route::get('/customer/delete/{id}', [Customers::class,'delete'])->name('customer
 Route::get('/customer/edit/{id}', [Customers::class,'edit'])->name('customer.edit');
 Route::post('/customer/update/{id}', [Customers::class,'update'])->name('customer.update');
 
-
+Route::get('get-all-session', function(){
+    $session = session()->all();
+    pm($session);
+});
