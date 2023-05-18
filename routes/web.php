@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Registration;
 use App\Models\Customer;
 use App\Http\Controllers\Customers;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,4 +36,12 @@ Route::post('/customer/update/{id}', [Customers::class,'update'])->name('custome
 Route::get('get-all-session', function(){
     $session = session()->all();
     pm($session);
+});
+Route::get('set-session', function(Request $request){
+    $request->session()->put("user_name","Bazil Farooq");
+    return redirect("get-all-session");
+});
+Route::get('destroy-session', function(){
+   session()->forget("user_name");
+    return redirect("get-all-session");
 });
