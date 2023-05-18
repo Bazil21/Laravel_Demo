@@ -12,7 +12,8 @@ class Customers extends Controller
     {
         $url = url("/customer");
         $title = "Create Customer";
-        $data = compact("url", "title");
+        $customer = "";
+        $data = compact("url", "title","customer");
         return view("customer")->with($data);
     }
     public function store(Request $request)
@@ -59,6 +60,7 @@ class Customers extends Controller
     }
     public function update($id, Request $request){
         $customer = Customer::find($id);
+        // pm($request->all());exit;
         $customer->name = $request['name'];
         $customer->email = $request['email'];
         $customer->password = md5($request['password']);
