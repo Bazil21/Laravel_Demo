@@ -12,7 +12,7 @@ class Customers extends Controller
     {
         $url = url("/customer");
         $title = "Create Customer";
-        $customer = "";
+        $customer=new Customer();
         $data = compact("url", "title","customer");
         return view("customer")->with($data);
     }
