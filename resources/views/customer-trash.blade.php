@@ -91,8 +91,8 @@
                                 @endif
                             </td>
                             <td>
-                               <a  class="btn btn-primary" href="{{route('customer.edit',['id' => $value->customer_id])}}"
-                                    role="button">Edit</a>
+                               <a  class="btn btn-primary" href="{{route('customer.restore',['id' => $value->customer_id])}}"
+                                    role="button">Restore</a>
                                 <a  class="btn btn-danger" href="{{route('customer.delete',['id' => $value->customer_id])}}"
                                     role="button">Delete</a>
                                     

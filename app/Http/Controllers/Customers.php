@@ -52,6 +52,15 @@ class Customers extends Controller
         }
         return redirect('/customer');
     }
+
+    public function restore($id)
+    {
+        $customer = Customer::withTrashed()->find($id);
+        if (!is_null($customer)) {
+            $customer->restore();
+        }
+        return redirect('/customer');
+    }
     public function edit($id)
     {
         $customer = Customer::find($id);
