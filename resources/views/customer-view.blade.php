@@ -41,6 +41,7 @@
         </nav>
     </header>
     <div class="mt-5 container">
+        <a name="" id="" class="btn btn-danger" href="{{url('customer/trash')}}" role="button">Go to Trash</a>
         <div class="table-responsive">
             <h4 class="text-center ">Customers Data</h4>
             <table class="table table-primary">
@@ -92,7 +93,7 @@
                                <a  class="btn btn-primary" href="{{route('customer.edit',['id' => $value->customer_id])}}"
                                     role="button">Edit</a>
                                 <a  class="btn btn-danger" href="{{route('customer.delete',['id' => $value->customer_id])}}"
-                                    role="button">Delete</a>
+                                    role="button">Trash</a>
                                     
                             </td>
                         </tr>
