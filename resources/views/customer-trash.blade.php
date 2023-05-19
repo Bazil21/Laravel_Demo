@@ -41,6 +41,8 @@
         </nav>
     </header>
     <div class="mt-5 container">
+        <a name="" id="" class="btn btn-primary" href="{{url('customer')}}" role="button">View Customers</a>
+
         <div class="table-responsive">
             <h4 class="text-center ">Customers Data</h4>
             <table class="table table-primary">
