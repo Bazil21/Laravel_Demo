@@ -29,6 +29,8 @@ Route::get('/about',function(){
 Route::get('/customer/create', [Customers::class,'index'])->name('customer.create');
 Route::post('/customer', [Customers::class,'store']);
 Route::get('/customer', [Customers::class,'view']);
+Route::get('/customer/trash', [Customers::class,'trash']);
+
 Route::get('/customer/delete/{id}', [Customers::class,'delete'])->name('customer.delete');
 Route::get('/customer/edit/{id}', [Customers::class,'edit'])->name('customer.edit');
 Route::post('/customer/update/{id}', [Customers::class,'update'])->name('customer.update');
