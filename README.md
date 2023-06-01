@@ -6,7 +6,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
-# CRUD with Soft Deletes in Laravel
+## CRUD with Soft Deletes in Laravel
 
 This repository contains a CRUD (Create, Read, Update, Delete) application built using Laravel, a powerful PHP framework. In addition to the basic CRUD functionality, this application also utilizes the Soft Delete feature provided by Laravel.
 
